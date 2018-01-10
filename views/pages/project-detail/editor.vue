@@ -23,6 +23,9 @@
               <Form-item :label="$t('p.detail.columns[0]')">
                 <i-input v-model="temp.description"></i-input>
               </Form-item>
+              <Form-item :label="$t('p.detail.columns[2]')">
+                <i-input v-model="temp.parameters"></i-input>
+              </Form-item>
               <Form-item :label="$t('p.detail.editor.autoClose')" v-if="isEdit">
                 <i-switch v-model="autoClose"></i-switch>
               </Form-item>
@@ -79,7 +82,8 @@ export default {
         url: '',
         mode: '',
         method: '',
-        description: ''
+        description: '',
+        parameters: ''
       }
     }
   },
@@ -110,12 +114,14 @@ export default {
           this.temp.mode = this.value.mode
           this.temp.method = this.value.method
           this.temp.description = this.value.description
+          this.temp.parameters = this.value.parameters
           this.codeEditor.setValue(this.temp.mode)
         } else {
           this.temp.url = ''
           this.temp.mode = '{"data": {}}'
           this.temp.method = 'get'
           this.temp.description = ''
+          this.temp.parameters = ''
           this.codeEditor.setValue(this.temp.mode)
         }
         this.format()
@@ -175,6 +181,7 @@ export default {
             this.value.mode = this.temp.mode
             this.value.method = this.temp.method
             this.value.description = this.temp.description
+            this.value.parameters = this.temp.parameters
             if (this.autoClose) this.close()
           }
         })

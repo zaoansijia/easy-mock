@@ -208,14 +208,14 @@
   }
 
   & > div:last-child {
-    flex: 0 0 350px;
+    flex: 0 0 450px;
   }
 
   .panel-info {
     background: var(--color-primary);
-    padding: 20px 20px;
+    padding: 40px 20px 0 20px;
     overflow: auto;
-    display: flex;
+    /* display: flex; */
     align-items: center;
     box-shadow: 0 0 3px #000;
 
@@ -232,8 +232,15 @@
     .wrapper {
       width: 100%;
     }
+    .param {
+      width:70px;
+      display: inline-block;
+      text-align: left;
+    }
   }
-
+  .panel-info.panel-wrapper{
+    overflow: scroll!important;
+  }
   @d form {
     padding: 20px 20px 1px;
     background: #fff;
@@ -245,10 +252,22 @@
   @d control {
     .em-proj-detail__switcher {
       box-shadow: 0 2px 3px #111;
-
       li {
         padding: 10px 0;
       }
     }
+  }
+}
+.proj-search {
+  width:150px;
+  input {
+    background: rgba(255, 255, 255, .18);
+  }
+  input,
+  input:hover,
+  input:focus {
+    border: none;
+    color:#fff;
+    outline: 0;
   }
 }

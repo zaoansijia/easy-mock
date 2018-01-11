@@ -43,16 +43,19 @@
         </div>
         <div class="em-proj-detail__switcher">
           <ul>
+            <li class="proj-search">
+              <i-input v-model="keywords" placeholder="Search Easy Mock"></i-input>
+            </li>
             <li @click="openEditor()" v-shortkey="['ctrl', 'n']" @shortkey="openEditor()">
               <Icon type="plus-round"></Icon> {{$t('p.detail.create.action')}}
             </li>
-            <li @click="handleWorkbench" v-shortkey="['ctrl', 'w']" @shortkey="handleWorkbench">
+            <!-- <li @click="handleWorkbench" v-shortkey="['ctrl', 'w']" @shortkey="handleWorkbench">
               <transition name="zoom" mode="out-in">
                 <Icon :type="project.extend.is_workbench ? 'android-star' : 'android-star-outline'"
                   :key="project.extend.is_workbench"></Icon>
               </transition>
               {{$t('p.detail.workbench')}}
-            </li>
+            </li> -->
             <li @click="updateBySwagger" v-shortkey="['ctrl', 's']" @shortkey="updateBySwagger">
               <Icon type="loop"></Icon> {{$t('p.detail.syncSwagger.action')}}
             </li>

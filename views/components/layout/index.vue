@@ -6,17 +6,17 @@
     <div v-shortkey="['w']" @shortkey="$router.push('/workbench')"></div>
     <div v-shortkey="['d']" @shortkey="$router.push('/docs')"></div>
     <div v-shortkey="['n']" @shortkey="$router.push('/new')"></div>
-    <div v-shortkey="['s']" @shortkey="onSearch"></div>
+    <!-- <div v-shortkey="['s']" @shortkey="onSearch"></div> -->
 
     <transition name="fade">
-      <div class="em-layout__nav" v-show="pageAnimated">
+      <div class="em-layout__nav nav-menu" v-show="pageAnimated">
         <Menu theme="dark" :active-name="pageKey" mode="horizontal">
           <div class="nav-logo" @click="$router.push('/')">
             <img src="/public/images/easy-mock.png">
           </div>
-          <div class="nav-search">
+          <!-- <div class="nav-search">
             <i-input v-model="searchValue" placeholder="Search Easy Mock" ref="search"></i-input>
-          </div>
+          </div> -->
           <Submenu name="1">
             <template slot="title">
               <Icon type="pound"></Icon> {{$t('c.layout.menu[0][0]')}}
@@ -37,11 +37,11 @@
             @click.native="$router.push('/workbench')">
             <Icon type="code-working"></Icon> {{$t('c.layout.menu[1]')}}
           </Menu-item>
-          <Menu-item
+          <!-- <Menu-item
             name="/dashboard"
             @click.native="$router.push('/dashboard')">
             <Icon type="ios-speedometer"></Icon> {{$t('c.layout.menu[2]')}}
-          </Menu-item>
+          </Menu-item> -->
           <Menu-item
             name="/docs"
             @click.native="$router.push('/docs')">
@@ -67,6 +67,21 @@
               class="ivu-menu-item"
               @click="open('http://mockjs.com/examples.html')">
               <Icon type="link"></Icon> {{$t('c.layout.menu[4][2]')}}
+            </li>
+            <li
+              class="ivu-menu-item"
+              @click="open('http://10.112.70.1/#/login?_k=vfatqd')">
+              <Icon type="link"></Icon> {{$t('c.layout.menu[4][3]')}}
+            </li>
+            <li
+              class="ivu-menu-item"
+              @click="open('http://doc.gome.inc/login.action')">
+              <Icon type="link"></Icon> {{$t('c.layout.menu[4][4]')}}
+            </li>
+            <li
+              class="ivu-menu-item"
+              @click="open('http://itpm.gome.inc/secure/Dashboard.jspa')">
+              <Icon type="link"></Icon> {{$t('c.layout.menu[4][5]')}}
             </li>
           </Submenu>
           <Submenu name="5" class="nav-avatar" v-show="userHeadImg">
@@ -137,12 +152,12 @@ export default {
   watch: {
     '$route' (to) {
       this.pageKey = to.path
-    },
-    searchValue: function (value) {
-      this.broadcast('group', 'query', value)
-      this.broadcast('project', 'query', value)
-      this.broadcast('projectDetail', 'query', value)
     }
+    // searchValue: function (value) {
+    //   this.broadcast('group', 'query', value)
+    //   this.broadcast('project', 'query', value)
+    //   this.broadcast('projectDetail', 'query', value)
+    // }
   },
   methods: {
     open (url) {
@@ -154,10 +169,10 @@ export default {
           this.$router.push('/log-out')
         }
       })
-    },
-    onSearch () {
-      this.$refs.search.focus()
     }
+    // onSearch () {
+    //   this.$refs.search.focus()
+    // }
   }
 }
 </script>

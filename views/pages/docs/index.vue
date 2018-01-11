@@ -87,6 +87,7 @@ export default {
         }
       }
     },
+    // docs: { docs }
     docs: {
       components: {
         docs,

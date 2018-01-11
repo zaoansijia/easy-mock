@@ -137,3 +137,6 @@
     }
   }
 }
+.em-docs__content .ivu-menu {
+  z-index: 2;
+}

@@ -4,7 +4,7 @@
       <div class="em-editor__editor">
         <div ref="codeEditor"></div>
       </div>
-      <div class="panel-info">
+      <div class="panel-info panel-wrapper">
         <em-spots :size="10"></em-spots>
         <div class="wrapper">
           <h2>{{isEdit ? $t('p.detail.editor.title[0]') : $t('p.detail.editor.title[1]')}}</h2>
@@ -24,7 +24,9 @@
                 <i-input v-model="temp.description"></i-input>
               </Form-item>
               <Form-item :label="$t('p.detail.columns[2]')">
-                <i-input v-model="temp.parameters"></i-input>
+                <ul v-if="temp.parameters!==''">
+                  <li v-for="(item,i) in temp.parameters" :key="i"><span class="param">{{item.name}}</span> : @{{item.type}}—{{item.required?$t('p.detail.editor.require[0]'):$t('p.detail.editor.require[0]')}}—{{item.description}}</li>
+                </ul>
               </Form-item>
               <Form-item :label="$t('p.detail.editor.autoClose')" v-if="isEdit">
                 <i-switch v-model="autoClose"></i-switch>
@@ -83,7 +85,11 @@ export default {
         mode: '',
         method: '',
         description: '',
-        parameters: ''
+        parameters: '',
+        ceshi: [
+          {name: 'hello'},
+          {name: 'kkk'}
+        ]
       }
     }
   },
@@ -114,7 +120,7 @@ export default {
           this.temp.mode = this.value.mode
           this.temp.method = this.value.method
           this.temp.description = this.value.description
-          this.temp.parameters = this.value.parameters
+          this.temp.parameters = JSON.parse(this.value.parameters)
           this.codeEditor.setValue(this.temp.mode)
         } else {
           this.temp.url = ''
